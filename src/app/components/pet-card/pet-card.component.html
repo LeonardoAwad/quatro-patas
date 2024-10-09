@@ -1,0 +1,41 @@
+<section
+  class="w-[360px] h-[500px] p-[30px] bg-white border border-[#CBCBCB] card-shadow flex flex-col justify-between rounded-[20px]"
+>
+  <img
+    class="w-[300px] h-[255px] rounded-[10px]"
+    src="../../../assets/img/pets/{{ pet.name.replaceAll(' ', '') }}.svg"
+    alt=""
+  />
+  <div class="font-nunito flex flex-col items-center w-full">
+    <h2 class="text-[26px] font-bold text-qp-secondary capitalize">
+      {{ pet.name }}
+    </h2>
+    <span class="text-[#8E8E8E] text-[22px] mt-1"
+      >{{ pet.breed }}, {{ pet.gender }}</span
+    >
+  </div>
+
+  <div class="w-full flex gapx-4 justify-between">
+    <button
+      class="h-[52px] w-[60px] rounded-[10px] flex justify-center items-center"
+      [ngClass]="{
+        'bg-[#BF80FF33]': pet.favorite,
+        'bg-[#E5E5E5]': !pet.favorite
+      }"
+      (click)="pet.favorite = !pet.favorite; favorite(pet.favorite)"
+    >
+      @if (pet.favorite) {
+      <img src="../../../assets/img/Heart.svg" alt="Favoritado" />
+      }@else {
+      <img src="../../../assets/img/GrayHeart.svg" alt="Favoritar" />
+      }
+    </button>
+
+    <button
+      class="h-[52px] w-[220px] bg-qp-secondary text-white rounded-[10px] text-[20px]"
+      (click)="isAdoptModalOpen.emit()"
+    >
+      Adote Agora
+    </button>
+  </div>
+</section>

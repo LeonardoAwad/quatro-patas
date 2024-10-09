@@ -1,0 +1,90 @@
+<section class="flex items-center py-16 relative flex-col">
+  <section class="max-w-6xl w-full grid grid-cols-3 pb-36">
+    <article class="col-span-2 pt-10">
+      <h1 class="font-amatic text-8xl font-bold">Adote Agora</h1>
+      <p class="font-nunito text-[26px] mt-20">
+        Temos vários peludinhos esperando para fazer um lar mais feliz!
+      </p>
+    </article>
+    <div class="col-span-1 absolute right-0 top-8 -z-10">
+      <img
+        src="../../../assets/img/AdoptDog.png"
+        alt="Cachorro | Desenho em formato de ilustração"
+      />
+    </div>
+  </section>
+
+  <div
+    class="max-w-7xl grid px-10 w-full grid-template gap-12 justify-center pb-32"
+  >
+    @for (pet of pets; track $index) {
+    <app-pet-card
+      [pet]="pet"
+      (isFavoriteModalOpen)="isFavoriteModalOpen = true"
+      (isAdoptModalOpen)="isAdoptModalOpen = true"
+    ></app-pet-card>
+    }
+  </div>
+  @if (isFavoriteModalOpen) {
+  <div
+    class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50"
+  >
+    <section
+      class="bg-white p-3 rounded-[20px] shadow-lg relative max-w-[640px] mx-auto"
+    >
+      <div class="bg-[#D88BB9] rounded-[20px] flex p-6">
+        <img class="ml-8" src="../../../assets/img/AdoptModalDog2.png" alt="" />
+        <div class="flex flex-col">
+          <h2
+            class="font-bold font-amatic text-5xl leading-tight w-44 mb-8 pt-2"
+          >
+            FAVORITADO COM AMOR!
+          </h2>
+          <p
+            class="font-nunito font-normal leading-tight text-[26px] w-[276px]"
+          >
+            Obrigado por seu interesse em nossos amigos! Esperamos ansiosos pela
+            sua adoção!
+          </p>
+        </div>
+        <img
+          (click)="isFavoriteModalOpen = false"
+          class="w-8 h-8 cursor-pointer mr-4"
+          src="../..//../assets/img/Close.png"
+          alt="Fechar Modal"
+        />
+      </div>
+    </section>
+  </div>
+
+  } @if (isAdoptModalOpen) {
+  <div
+    class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50"
+  >
+    <section
+      class="bg-white p-3 rounded-[20px] shadow-lg relative max-w-[620px] mx-auto"
+    >
+      <div class="bg-[#91D88B] rounded-[20px] flex p-6">
+        <img class="ml-8" src="../../../assets/img/AdoptModalDog1.png" alt="" />
+        <div class="flex flex-col">
+          <h2
+            class="font-bold font-amatic text-5xl w-44 mb-8 leading-tight pt-2"
+          >
+            Você ganhou um novo amiguinho!
+          </h2>
+          <p class="font-nunito font-normal text-[26px] leading-tight">
+            Obrigado por sua adoção, ficamos felizes por você e por ele!
+          </p>
+        </div>
+        <img
+          (click)="isAdoptModalOpen = false"
+          class="w-8 h-8 cursor-pointer mr-2"
+          src="../..//../assets/img/Close.png"
+          alt="Fechar Modal"
+        />
+      </div>
+    </section>
+  </div>
+
+  }
+</section>
